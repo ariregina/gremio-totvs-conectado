@@ -18,7 +18,7 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         <div className="max-w-4xl mx-auto animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Grêmio
+            Grêmio TODOS
             <span className="block bg-gradient-to-r from-white to-accent bg-clip-text text-transparent">
               TOTVS e NEOGRID
             </span>

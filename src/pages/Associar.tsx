@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,8 +29,12 @@ import {
   Mail,
   CheckCircle2,
   Info,
+  PartyPopper,
+  Heart,
+  Star,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import confetti from "canvas-confetti";
 
 const Associar = () => {
   const navigate = useNavigate();
@@ -39,6 +43,7 @@ const Associar = () => {
   const [step, setStep] = useState(1);
   const [emailValidado, setEmailValidado] = useState(false);
   const [aceitaTermos, setAceitaTermos] = useState(false);
+  const [cadastroEnviado, setCadastroEnviado] = useState(false);
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -72,6 +77,38 @@ const Associar = () => {
     });
   };
 
+  const fireConfetti = useCallback(() => {
+    const duration = 3000;
+    const end = Date.now() + duration;
+
+    const frame = () => {
+      confetti({
+        particleCount: 3,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 0.7 },
+        colors: ["#00DBFF", "#002233", "#FFFFFF", "#FFD700"],
+      });
+      confetti({
+        particleCount: 3,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 0.7 },
+        colors: ["#00DBFF", "#002233", "#FFFFFF", "#FFD700"],
+      });
+      if (Date.now() < end) requestAnimationFrame(frame);
+    };
+    frame();
+
+    // Big burst
+    confetti({
+      particleCount: 150,
+      spread: 100,
+      origin: { y: 0.6 },
+      colors: ["#00DBFF", "#002233", "#FFFFFF", "#FFD700"],
+    });
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!aceitaTermos) {
@@ -82,11 +119,94 @@ const Associar = () => {
       });
       return;
     }
-    toast({
-      title: "Cadastro enviado com sucesso!",
-      description: "Você receberá um e-mail de confirmação em breve.",
-    });
+    setCadastroEnviado(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => fireConfetti(), 500);
   };
+
+  if (cadastroEnviado) {
+    return (
+      <div className="min-h-screen bg-background">
+        {/* Header bar */}
+        <div className="bg-primary text-primary-foreground">
+          <div className="container mx-auto px-4 py-4 flex items-center gap-4">
+            <button
+              onClick={() => navigate("/")}
+              className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+            >
+              <ArrowLeft className="h-5 w-5" />
+              <span className="hidden sm:inline">Voltar ao site</span>
+            </button>
+            <div className="flex items-center gap-2 ml-auto">
+              <Users className="h-6 w-6 text-accent" />
+              <span className="font-bold text-lg">Grêmio Todos TOTVS</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 py-16 max-w-3xl flex flex-col items-center text-center">
+          {/* Success icon with animation */}
+          <div className="relative mb-8">
+            <div className="w-28 h-28 rounded-full bg-accent/10 flex items-center justify-center animate-scale-in">
+              <PartyPopper className="h-14 w-14 text-accent animate-fade-in" />
+            </div>
+            <div className="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center animate-fade-in" style={{ animationDelay: "0.5s" }}>
+              <Star className="h-5 w-5 text-primary" />
+            </div>
+            <div className="absolute -bottom-1 -left-3 w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center animate-fade-in" style={{ animationDelay: "0.8s" }}>
+              <Heart className="h-4 w-4 text-accent" />
+            </div>
+          </div>
+
+          <h1 className="text-3xl md:text-5xl font-bold text-primary mb-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+            Bem-vindo ao Grêmio! 🎉
+          </h1>
+
+          <p className="text-xl text-muted-foreground mb-6 animate-fade-in leading-relaxed" style={{ animationDelay: "0.5s" }}>
+            Seu cadastro foi enviado com sucesso!
+          </p>
+
+          <div className="bg-card border rounded-2xl shadow-card p-8 mb-8 w-full animate-fade-in" style={{ animationDelay: "0.7s" }}>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Mail className="h-6 w-6 text-accent" />
+              <h2 className="text-lg font-semibold text-foreground">Confirmação por E-mail</h2>
+            </div>
+            <p className="text-muted-foreground leading-relaxed">
+              Em breve você receberá um <strong>e-mail de confirmação</strong> no endereço <span className="text-accent font-medium">{formData.email}</span>. 
+              Caso não receba em até 24 horas, entre em contato pelo e-mail{" "}
+              <a href="mailto:jv.gremio@totvs.com.br" className="text-accent hover:underline font-medium">
+                jv.gremio@totvs.com.br
+              </a>.
+            </p>
+          </div>
+
+          <div className="bg-accent/5 border border-accent/20 rounded-xl p-6 mb-8 w-full animate-fade-in" style={{ animationDelay: "0.9s" }}>
+            <h3 className="font-semibold text-foreground mb-3 flex items-center justify-center gap-2">
+              <CheckCircle2 className="h-5 w-5 text-accent" />
+              O que vem por aí
+            </h3>
+            <ul className="text-muted-foreground space-y-2 text-sm">
+              <li>✨ Acesso aos <strong>eventos exclusivos</strong> do Grêmio</li>
+              <li>🎫 <strong>Descontos especiais</strong> em convênios parceiros</li>
+              <li>🤝 Participação na <strong>comunidade</strong> de colaboradores</li>
+              <li>🎉 <strong>Happy hours</strong>, festas temáticas e muito mais!</li>
+            </ul>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: "1.1s" }}>
+            <Button onClick={() => navigate("/")} size="lg" className="gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              Voltar ao site
+            </Button>
+            <Button onClick={() => fireConfetti()} variant="outline" size="lg" className="gap-2">
+              <PartyPopper className="h-4 w-4" />
+              Comemorar de novo! 🎊
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">

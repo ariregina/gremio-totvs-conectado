@@ -33,7 +33,7 @@ const Hero = () => {
             Faça parte da maior rede de colaboradores TOTVS do Brasil.
           </p>
 
-          <div className="flex flex-col items-center gap-6 mb-12">
+          <div className="mb-12 flex flex-row items-center justify-center gap-0">
             <Button 
               size="lg" 
               className="bg-accent hover:bg-accent-hover text-accent-foreground shadow-hero transition-bounce"
@@ -44,7 +44,7 @@ const Hero = () => {
             </Button>
 
             <div className="w-full max-w-md">
-              <p className="text-sm text-white/70 mb-2">Inscreva-se para não perder as novidades do Grêmio</p>
+              <p className="text-white/70 mb-2 text-lg mx-0 px-0">Inscreva-se para não perder as novidades do Grêmio</p>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();

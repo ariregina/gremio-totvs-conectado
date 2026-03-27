@@ -169,20 +169,6 @@ const Events = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center">
-          <div className="inline-block bg-muted/50 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold mb-4 text-foreground">
-              Não Perca Nenhum Evento!
-            </h3>
-            <p className="text-muted-foreground mb-6 max-w-md">
-              Receba notificações sobre novos eventos e garante sua vaga com antecedência.
-            </p>
-            <Button className="bg-accent hover:bg-accent-hover">
-              Ativar Notificações
-            </Button>
-          </div>
-        </div>
       </div>
     </section>
   );

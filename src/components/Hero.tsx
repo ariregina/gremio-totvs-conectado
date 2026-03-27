@@ -3,6 +3,8 @@ import { ArrowRight, Users, Star, Calendar } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -34,6 +36,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="bg-accent hover:bg-accent-hover text-accent-foreground shadow-hero transition-bounce"
+              onClick={() => navigate("/associar")}
             >
               Quero me Associar
               <ArrowRight className="ml-2 h-5 w-5" />

@@ -6,32 +6,32 @@
 
 @layer base {
   :root {
-    /* TOTVS Brand Colors */
+    /* TOTVS Brand Colors - #002233 (Azul Escuro), #00DBFF (Azul Cyan), #FFFFFF */
     --background: 0 0% 100%;
-    --foreground: 217 18% 20%;
+    --foreground: 200 100% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 217 18% 20%;
+    --card-foreground: 200 100% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 217 18% 20%;
+    --popover-foreground: 200 100% 10%;
 
-    /* TOTVS Blue Primary */
-    --primary: 217 85% 40%;
+    /* TOTVS Azul Escuro #002233 */
+    --primary: 197 100% 10%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 217 85% 35%;
+    --primary-hover: 197 100% 14%;
 
-    /* Vibrant Orange Accent */
-    --accent: 18 95% 60%;
-    --accent-foreground: 0 0% 100%;
-    --accent-hover: 18 95% 55%;
+    /* TOTVS Cyan #00DBFF */
+    --accent: 188 100% 50%;
+    --accent-foreground: 200 100% 10%;
+    --accent-hover: 188 100% 42%;
 
     /* Clean Grays */
-    --secondary: 220 13% 96%;
-    --secondary-foreground: 217 18% 20%;
+    --secondary: 200 15% 96%;
+    --secondary-foreground: 200 100% 10%;
 
-    --muted: 220 13% 96%;
-    --muted-foreground: 217 10% 55%;
+    --muted: 200 15% 96%;
+    --muted-foreground: 200 10% 45%;
 
     /* Institutional Colors */
     --success: 142 71% 45%;
@@ -40,18 +40,18 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 217 85% 40%;
+    --border: 200 15% 90%;
+    --input: 200 15% 90%;
+    --ring: 188 100% 50%;
 
     /* Design System Extensions */
-    --gradient-primary: linear-gradient(135deg, hsl(217 85% 40%), hsl(217 85% 50%));
-    --gradient-hero: linear-gradient(135deg, hsl(217 85% 40%) 0%, hsl(217 85% 50%) 50%, hsl(18 95% 60%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 13% 98%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(197 100% 10%), hsl(197 100% 18%));
+    --gradient-hero: linear-gradient(135deg, hsl(197 100% 10%) 0%, hsl(197 100% 15%) 50%, hsl(188 100% 50%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(200 15% 98%) 100%);
     
-    --shadow-card: 0 2px 10px -2px hsl(217 85% 40% / 0.1);
-    --shadow-hero: 0 20px 40px -10px hsl(217 85% 40% / 0.3);
-    --shadow-float: 0 8px 25px -8px hsl(217 85% 40% / 0.2);
+    --shadow-card: 0 2px 10px -2px hsl(197 100% 10% / 0.1);
+    --shadow-hero: 0 20px 40px -10px hsl(197 100% 10% / 0.3);
+    --shadow-float: 0 8px 25px -8px hsl(197 100% 10% / 0.2);
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);

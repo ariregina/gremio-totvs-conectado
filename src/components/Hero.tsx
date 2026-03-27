@@ -33,7 +33,7 @@ const Hero = () => {
             Faça parte da maior rede de colaboradores TOTVS do Brasil.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex flex-col items-center gap-6 mb-12">
             <Button 
               size="lg" 
               className="bg-accent hover:bg-accent-hover text-accent-foreground shadow-hero transition-bounce"
@@ -42,13 +42,33 @@ const Hero = () => {
               Quero me Associar
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
-            >
-              Saiba Mais
-            </Button>
+
+            <div className="w-full max-w-md">
+              <p className="text-sm text-white/70 mb-2">Inscreva-se para não perder as novidades do Grêmio</p>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const form = e.target as HTMLFormElement;
+                  const input = form.elements.namedItem('newsletter') as HTMLInputElement;
+                  if (input.value) {
+                    input.value = '';
+                    alert('E-mail cadastrado com sucesso! Você receberá nossas novidades.');
+                  }
+                }}
+                className="flex gap-2"
+              >
+                <input
+                  name="newsletter"
+                  type="email"
+                  required
+                  placeholder="Seu melhor e-mail"
+                  className="flex-1 h-11 rounded-md bg-white/10 border border-white/20 px-4 text-white placeholder:text-white/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                />
+                <Button type="submit" size="lg" variant="secondary" className="shrink-0">
+                  Inscrever-se
+                </Button>
+              </form>
+            </div>
           </div>
 
           {/* Stats */}

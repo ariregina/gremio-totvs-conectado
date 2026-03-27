@@ -44,8 +44,6 @@ const Associar = () => {
   const [emailValidado, setEmailValidado] = useState(false);
   const [aceitaTermos, setAceitaTermos] = useState(false);
   const [cadastroEnviado, setCadastroEnviado] = useState(false);
-  const [emailValidado, setEmailValidado] = useState(false);
-  const [aceitaTermos, setAceitaTermos] = useState(false);
   const [formData, setFormData] = useState({
     nome: "",
     email: "",

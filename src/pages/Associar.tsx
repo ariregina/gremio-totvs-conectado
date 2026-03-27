@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,8 +29,12 @@ import {
   Mail,
   CheckCircle2,
   Info,
+  PartyPopper,
+  Heart,
+  Star,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import confetti from "canvas-confetti";
 
 const Associar = () => {
   const navigate = useNavigate();

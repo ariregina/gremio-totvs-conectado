@@ -130,69 +130,6 @@ const Highlights = () => {
           })}
         </div>
 
-        {/* Monthly Statistics */}
-        <Card className="border-0 shadow-card bg-gradient-primary text-white overflow-hidden">
-          <CardContent className="p-8">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
-              
-              {/* Stats Header */}
-              <div className="lg:col-span-1">
-                <h3 className="text-2xl font-bold mb-2">Crescimento Mensal</h3>
-                <p className="text-white/80">Resultados de Junho 2024</p>
-              </div>
-
-              {/* Statistics */}
-              {monthlyStats.map((stat, index) => {
-                const IconComponent = stat.icon;
-                return (
-                  <div key={index} className="text-center lg:text-left">
-                    <div className="flex items-center justify-center lg:justify-start space-x-3 mb-2">
-                      <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
-                        <IconComponent className="h-5 w-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="text-2xl font-bold">{stat.value}</div>
-                        <div className="text-accent font-semibold text-sm">{stat.growth}</div>
-                      </div>
-                    </div>
-                    <div className="text-white/80 text-sm">{stat.label}</div>
-                  </div>
-                );
-              })}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Newsletter CTA */}
-        <div className="mt-16 text-center">
-          <Card className="border-0 shadow-card max-w-2xl mx-auto">
-            <CardContent className="p-8">
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  Não Perca Nenhuma Novidade
-                </h3>
-                <p className="text-muted-foreground">
-                  Receba as principais novidades e benefícios diretamente no seu e-mail.
-                </p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input 
-                  type="email" 
-                  placeholder="Seu e-mail" 
-                  className="flex-1 px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                />
-                <Button className="bg-accent hover:bg-accent-hover px-8">
-                  Inscrever-se
-                </Button>
-              </div>
-              
-              <p className="text-xs text-muted-foreground mt-4">
-                Seus dados estão seguros conosco. Você pode cancelar a qualquer momento.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </section>
   );

@@ -77,6 +77,38 @@ const Associar = () => {
     });
   };
 
+  const fireConfetti = useCallback(() => {
+    const duration = 3000;
+    const end = Date.now() + duration;
+
+    const frame = () => {
+      confetti({
+        particleCount: 3,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 0.7 },
+        colors: ["#00DBFF", "#002233", "#FFFFFF", "#FFD700"],
+      });
+      confetti({
+        particleCount: 3,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 0.7 },
+        colors: ["#00DBFF", "#002233", "#FFFFFF", "#FFD700"],
+      });
+      if (Date.now() < end) requestAnimationFrame(frame);
+    };
+    frame();
+
+    // Big burst
+    confetti({
+      particleCount: 150,
+      spread: 100,
+      origin: { y: 0.6 },
+      colors: ["#00DBFF", "#002233", "#FFFFFF", "#FFD700"],
+    });
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!aceitaTermos) {
@@ -87,10 +119,9 @@ const Associar = () => {
       });
       return;
     }
-    toast({
-      title: "Cadastro enviado com sucesso!",
-      description: "Você receberá um e-mail de confirmação em breve.",
-    });
+    setCadastroEnviado(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => fireConfetti(), 500);
   };
 
   return (

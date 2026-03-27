@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Users, LogIn } from "lucide-react";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
@@ -54,7 +56,7 @@ const Header = () => {
               <LogIn className="h-4 w-4 mr-2" />
               Área do Associado
             </Button>
-            <Button size="sm" className="bg-gradient-primary hover:bg-primary-hover transition-smooth">
+            <Button size="sm" className="bg-gradient-primary hover:bg-primary-hover transition-smooth" onClick={() => navigate("/associar")}>
               Associe-se
             </Button>
           </div>
@@ -86,7 +88,7 @@ const Header = () => {
                   <LogIn className="h-4 w-4 mr-2" />
                   Área do Associado
                 </Button>
-                <Button size="sm" className="bg-gradient-primary">
+                <Button size="sm" className="bg-gradient-primary" onClick={() => navigate("/associar")}>
                   Associe-se
                 </Button>
               </div>

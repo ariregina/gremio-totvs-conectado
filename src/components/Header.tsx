@@ -88,7 +88,7 @@ const Header = () => {
                   <LogIn className="h-4 w-4 mr-2" />
                   Área do Associado
                 </Button>
-                <Button size="sm" className="bg-gradient-primary">
+                <Button size="sm" className="bg-gradient-primary" onClick={() => navigate("/associar")}>
                   Associe-se
                 </Button>
               </div>
